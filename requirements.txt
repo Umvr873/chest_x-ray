@@ -1,4 +1,4 @@
-streamlit==1.33.0
+sstreamlit==1.35.0  # or latest
 torch==2.7.0
 torchvision
 matplotlib

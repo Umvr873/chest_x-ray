@@ -35,7 +35,6 @@ suggestions = {
     )
 }
 
-
 # Explanations
 explanation = {
     "COVID": (
@@ -55,7 +54,6 @@ explanation = {
         "However, imaging findings should be interpreted in conjunction with clinical presentation."
     )
 }
-
 
 # Load model
 @st.cache_resource
@@ -133,7 +131,7 @@ if uploaded_file:
         if grayscale_ratio > 30:
             st.error("🚫 This doesn't appear to be a valid chest X-ray.")
         else:
-            st.image(image, caption="Uploaded Image", use_container_width=True)
+            st.image(image, caption="Uploaded Image", use_column_width=True)
 
             img_tensor = transform(image).unsqueeze(0)
             img_tensor.requires_grad_()
@@ -166,7 +164,7 @@ if uploaded_file:
                 blended = 0.6 * image_np + 0.4 * heatmap_color
                 blended = np.clip(blended, 0, 1)
 
-                st.image(blended, caption="Model Decision Heatmap", use_container_width=True)
+                st.image(blended, caption="Model Decision Heatmap", use_column_width=True)
 
                 st.subheader("🧠 Model Explanation:")
                 st.write(explanation.get(pred_class, "No explanation available."))
